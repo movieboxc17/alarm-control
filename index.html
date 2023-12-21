@@ -8,13 +8,21 @@
 <body>
 
 <button onclick="playAlarm()">Click me for alarm</button>
+<button onclick="stopAlarm()">Stop Alarm</button>
 
 <audio id="alarmSound" src="alarm.wav"></audio>
 
 <script>
+    var audio = document.getElementById("alarmSound");
+
     function playAlarm() {
-        var audio = document.getElementById("alarmSound");
+        audio.loop = true; // Set the loop property to true
         audio.play();
+    }
+
+    function stopAlarm() {
+        audio.pause();
+        audio.currentTime = 0; // Reset the audio to the beginning
     }
 </script>
 
