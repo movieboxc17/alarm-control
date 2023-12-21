@@ -3,26 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alarm Button</title>
+    <title>Emergency Control Panel</title>
+    <style>
+        body {
+            background-color: #000; /* Black background */
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #panel {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #ff4d4d;
+            color: #fff;
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #ff6666;
+        }
+
+        #alarmSound {
+            display: none; /* Hide the audio element */
+        }
+    </style>
 </head>
 <body>
 
-<button onclick="playAlarm()">Click me for alarm</button>
-<button onclick="stopAlarm()">Stop Alarm</button>
+<div id="panel">
+    <h1>Emergency Control Panel</h1>
 
-<audio id="alarmSound" src="alarm.wav"></audio>
+    <button onclick="playAlarm()">Activate Alarm</button>
+    <button onclick="stopAlarm()">Stop Alarm</button>
+
+    <audio id="alarmSound" src="alarm.wav" loop></audio>
+</div>
 
 <script>
     var audio = document.getElementById("alarmSound");
 
     function playAlarm() {
-        audio.loop = true; // Set the loop property to true
         audio.play();
     }
 
     function stopAlarm() {
         audio.pause();
-        audio.currentTime = 0; // Reset the audio to the beginning
+        audio.currentTime = 0;
     }
 </script>
 
